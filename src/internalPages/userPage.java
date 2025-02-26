@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package internalPages;
+import adlawan.customerForm;
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -22,8 +26,15 @@ public class userPage extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         
+        search.setOpaque(false);
+        search.setBackground(new Color(0,0,0,0));
+        
     }
 
+    Color navcolor = new Color (255,204,255);
+    Color headcolor = new Color (204,51,255);
+    Color bodycolor = new Color (153,153,255);
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,33 +46,199 @@ public class userPage extends javax.swing.JInternalFrame {
 
         jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        add = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        edit = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        delete = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        search = new javax.swing.JTextField();
+        search_button = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(153, 102, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("THIS IS USER PAGE");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 330, 70));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setLayout(null);
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(540, 0, 160, 60);
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("CUSTOMER");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(0, 0, 210, 60);
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 744, 60));
+
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 710, 280));
+
+        add.setBackground(new java.awt.Color(255, 204, 255));
+        add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addMouseExited(evt);
+            }
+        });
+        add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("ADD");
+        add.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 100, 20));
+
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 40));
+
+        edit.setBackground(new java.awt.Color(255, 204, 255));
+        edit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editMouseExited(evt);
+            }
+        });
+        edit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("EDIT");
+        edit.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 100, 20));
+
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, 40));
+
+        delete.setBackground(new java.awt.Color(255, 204, 255));
+        delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteMouseExited(evt);
+            }
+        });
+        delete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("DELETE");
+        delete.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 100, 20));
+
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 40));
+
+        search.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search.setOpaque(false);
+        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 190, 40));
+
+        search_button.setBackground(new java.awt.Color(255, 204, 255));
+        search_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        search_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                search_buttonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                search_buttonMouseExited(evt);
+            }
+        });
+        search_button.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("SEARCH");
+        search_button.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, -1));
+
+        jPanel1.add(search_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
+        add.setBackground(bodycolor);
+    }//GEN-LAST:event_addMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        add.setBackground(navcolor);
+    }//GEN-LAST:event_addMouseExited
+
+    private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
+        edit.setBackground(bodycolor);
+    }//GEN-LAST:event_editMouseEntered
+
+    private void editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseExited
+        edit.setBackground(navcolor);
+    }//GEN-LAST:event_editMouseExited
+
+    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
+        delete.setBackground(bodycolor);
+    }//GEN-LAST:event_deleteMouseEntered
+
+    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
+        delete.setBackground(navcolor);
+    }//GEN-LAST:event_deleteMouseExited
+
+    private void search_buttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search_buttonMouseEntered
+        search_button.setBackground(bodycolor);
+    }//GEN-LAST:event_search_buttonMouseEntered
+
+    private void search_buttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search_buttonMouseExited
+        search_button.setBackground(navcolor);
+    }//GEN-LAST:event_search_buttonMouseExited
+
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();              
+        customerForm cf = new customerForm();
+        cf.setVisible(true);
+    }//GEN-LAST:event_addMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel add;
+    private javax.swing.JPanel delete;
+    private javax.swing.JPanel edit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField search;
+    private javax.swing.JPanel search_button;
     // End of variables declaration//GEN-END:variables
 }
