@@ -101,6 +101,11 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("USER PAGE");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         userpane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 12, -1, -1));
 
         navbar.add(userpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 130, 40));
@@ -226,8 +231,12 @@ public class dashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_reportspaneMouseExited
 
     private void userpaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userpaneMouseClicked
-        userPage up = new userPage();
-        maindesktop.add(up).setVisible(true);
+      userPage up = new userPage();
+maindesktop.add(up);
+up.toFront();  // Bring it to front
+up.setVisible(true);
+
+
     }//GEN-LAST:event_userpaneMouseClicked
 
     private void dashpaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpaneMouseClicked
@@ -259,6 +268,13 @@ public class dashBoard extends javax.swing.JFrame {
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
         setState(ICONIFIED);
     }//GEN-LAST:event_minimizeMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        new userPage().setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

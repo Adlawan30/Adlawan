@@ -5,10 +5,14 @@
  */
 package internalPages;
 import adlawan.customerForm;
+import config.dbConnect;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -21,6 +25,8 @@ public class userPage extends javax.swing.JInternalFrame {
      */
     public userPage() {
         initComponents();
+        displayData();
+   
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
@@ -34,6 +40,18 @@ public class userPage extends javax.swing.JInternalFrame {
     Color navcolor = new Color (255,204,255);
     Color headcolor = new Color (204,51,255);
     Color bodycolor = new Color (153,153,255);
+    
+     public void displayData(){
+        try{
+            dbConnect dbc = new dbConnect();
+            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname, u_email, u_user, u_pass FROM tbl_user");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+             rs.close();
+        }catch(SQLException ex){
+            System.out.println("Errors: "+ex.getMessage());
+
+        }
+     }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,4 +259,6 @@ public class userPage extends javax.swing.JInternalFrame {
     private javax.swing.JTextField search;
     private javax.swing.JPanel search_button;
     // End of variables declaration//GEN-END:variables
+
+  
 }
