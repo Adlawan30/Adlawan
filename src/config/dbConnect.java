@@ -28,13 +28,12 @@ public class dbConnect {
                     System.out.println("Can't connect to database: "+ex.getMessage());
             }
         }
-        //Function to save data
-       public int insertData(String sql, Object... params) {
+
+    public int insertData(String sql, Object... params) {
     int result;
     try {
         PreparedStatement pst = connect.prepareStatement(sql);
         
-        // Set parameters dynamically
         for (int i = 0; i < params.length; i++) {
             pst.setObject(i + 1, params[i]);
         }
@@ -49,8 +48,7 @@ public class dbConnect {
     }
     return result;
 }
-
-        //Function to retrieve data
+     
         public ResultSet getData(String sql) throws SQLException{
             Statement stmt = connect.createStatement();
             ResultSet rst = stmt.executeQuery(sql);

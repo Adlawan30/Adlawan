@@ -44,7 +44,7 @@ public class userPage extends javax.swing.JInternalFrame {
      public void displayData(){
         try{
             dbConnect dbc = new dbConnect();
-            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname, u_email, u_user, u_pass FROM tbl_user");
+            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname, u_email, u_username, u_password FROM tbl_user");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){

@@ -299,11 +299,12 @@ else if (pword.getText().isEmpty()) {
 else if (pword.getText().isEmpty()) {
     JOptionPane.showMessageDialog(null, "Password should have at least 8 characters");
     pword.setText("");
-} 
+ 
         
-        loginForm lf = new loginForm();
-        this.dispose();
+        loginForm lf = new loginForm(); 
         lf.setVisible(true);
+        this.dispose();
+}
     }//GEN-LAST:event_registerMouseClicked
 
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
